@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
 
+import { useState } from 'react';
+import './App.css';
+import UserForms from './components/UserForms.jsx';
+import VazhipadTable from './components/Vazhipadtable';
 function App() {
+  const [vazhipadList,setvazhipadList]=useState([])
+  console.log(vazhipadList)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className='appheader'>
+        <h1>AMARAMBALAM SIVA TEMPLE</h1>
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQEA8NDQ8PDw8NDQ0NDw8ODw8ODg8OFhEWFhURFRYYHSggGBolGxUXITEhJikrLi4uGB8zODMtNzQtLisBCgoKDQ0NDw8PDysZFRkrKy0rKyssKzcrKy0tLTctKysrKy0rKysrKysrKysrKysrKysrKysrLSsrKysrKysrK//AABEIALcBEwMBIgACEQEDEQH/xAAbAAADAQADAQAAAAAAAAAAAAAAAQIDBAUGB//EADgQAAICAQMCBAQFAwMDBQAAAAECABEDBBIhBTETIkFRBmFxgTKRobHBFEJSYnLRI+HwJDOCksL/xAAXAQEBAQEAAAAAAAAAAAAAAAAAAQID/8QAGBEBAQEBAQAAAAAAAAAAAAAAAAERQSH/2gAMAwEAAhEDEQA/APoG2LZNQJVQMlE1WKoxKixLUzOFwNw0oNMA0e6QbXC5jvlBpRcUIQHGGkwgbq8rdONLDSDRzMjAmKUSTFcoiTUAJi3R7YbYDEcBHAIQuEAijuSTAZMktIJkMZBTZJmTFFKJYyRLJkEwCELhCtxLEyVpopkFbYisoRmBnEZRmbSoVwuK4iYGqmWDMVMrdA5CmVOOrTUPAuKAMcBRwjgKEIwIABKCwCxmQIrJqO4GBMI4pQXETAmSTAZMgmK4oATJMcIEERVKMm4EkQ2yrks0iphHcIAomixVGBAsGXumYEqAGSyyoQMSIqmpEVSozAjl1DbAkGWGiCx1AoNLDzKpUDQNKBmSy7gaCMSVMe6QBMe6LdFcB3CTcLgVODqeq4EfwnyouQbTtY0eRYr3Nc1OXc+VfE2ZhqswFbvGyFSWsA96C+/N8C+PrA+o4squNyMGU2LUgjg0YzPJfCPU1w6DJuGRn0xfI6lGXcXY7Qt97P7z1OFjsQ5NoYqu6uF3GuBfpZofaUVFKiMBRRmIwJaQ0pjMnMALTjvqBKyGcUpNRKr+qMJkccJcieu6BlXOOGlb5yba3HcyDSpRRMN0ioVA0BiJk1CVAYCEcBiVJBhugVHUA0IBAtAySYEtkjQH1MFEsCBoolGZiO5AzFFcLlHH6jrUwY3y5CAFBIB/ub0AnyrLqcTM7eLsfKzNlOPam5z3/ET6m+F9e89j8e6bemJmY+Gm+8YJAZyVok+wF8d+Z5E6zAV8Ncb7bKh9qIoPpXNj94HN0mjxlDs1OWmRlJ3o26/QqALo8/UCej+F8AbZ42pzZ8mnUbMb7VxIareoH4jyeTyL+88EXIYq21TxTEB0Yel8WJ3vRepsuXCFQKoyAHYS26zz37CrgfRoiYSGkAXhcREyZh7yjQmZM0xyZfYzE6iXE1uz+kxaYs8N81iag5YRECE1iO1hCOpxdDBmgMgCVAq4iYRGEVujBkRyirhcm4XAqoVDdC4BLBkxiAyZnvuU/IqGPHApBNKiAjuQEUCYQC4XJJigee+NNIGx4tQbvTu4oWbXIhU0B3N7ftc8Niw4wfFXGbJJUvu49yqk0s+pa3TDKjYz2YV9D6H7GfMdTi8IkckknzkUGUEi1P8AcLvmFji9R5G7euM8jew3KL9SLHrU4vTta5bKm4u2Fyu4rWQFSAR8hdmGvRsiFeygEn51Oq0mtP8AVuwLAt4TH3YbAjfewGgfb+kdQGowplBFkU49nHcfz95ymaeG+FeobMwB4GdQrqPwB+ACPuZ7VjcsDd5xnlusmVliyzB8c5bfKZMampUscYqYthm9yMhN9uJpMY+CYS9x9ooR24lSRHc4uqhKBkXAGQaQk3GIDgYCBlCEcUcqCEIoGgMYkCUJBYlXIuBMiqJiuTGJQ4GEIE1HAxQPI/EvxXl0erTF4aZMDY8eQ0G8SiWDUbr09pxPiHRDbjRdQ+RNjZNPp2VP+ljaiTdbj2AF9uZ2HxZjw5WS2HiY+HY/gCWDtZvQ3+863UZlbJkzlvM48220THj8oUc89lHHFwOBg6danfxY5/4l4ejYsTjKmHxcpT8RAtVPoL7fqY8blydynYW8qCyxQIO497J4+c7vSKRW4jc3JA7AewhWWl6c9FtuLGTRBcliCO3Yfpc9J4oPYidXqcu0UT8+OeanQanrG0+VpUeyIJkHEfWR0bVeNgx5T3YH70SL/ScsxqY44xQ8MTVhIjRmxA9BM2cTUgRbYGO4e0JtUJdG0LmdwuYVoGlbplcdyjUGUDMQZQaBqGjBmQaMGBrCSDKgOEVwuQOO5NwgVARXC5RVwuTcIFXC5FwuEXc67r2u8HT5nFlxibaosEueFF0atiBOZkagTPFfEOuZSAxUgZMeU92J2uDQr2qBwdbqdULAxIm+t5V17+11dTjMuxhjve3OTIx/CWHAX5Cz+87XMlo2TKa4sKPn2uef0qeLmZmunSkADbtm9RY9OST8+IV3ujd3ddgpymwovK1/kSe31nK1Olzq9Y2Syh3ZWvbjJ7cep+VD6ic7p2JcIZiArNQr+6h6f+fKdT1brAsoPvXt/wAyjXL1plPg5AoJBKsvmDi/pPLdb1YbNtQWQtuRQUE9h9a/eT1LUF3QrwVLH6KQR/xJ6H085tRjxDm33OTz5RyxMzpj6j0TEcemwIe64Uv6kWf1M5ZaZF5O6XE1qWmbRRSguFwAhcAijuEgVx3IjuFXHci4XA0BjEgRiBoJQkQgWDKuZR3CNLhcyuPdCtbhcz3QDQjTdC5EcDQNDdIjhVXMtTm2LfAJ7E9h8/nG+QDkzyPXupsWIHa6HP5CBn1jqbYwxTJkahzue2PzA7X8p5/FlbO75CLVML3xuVWbgX9Zy9J0nNqrYUqC7yOSMSn6+s9Ho8Wkx6b+iXICdqHI4BD5HFHxOfTg13EDpxjfVhUS0U/+45BpFuu3qeDQnatqMWnUrjXbQCkmjkauwJ/jtMtX1NcaDDp12qvt3PzJ9TPO5t7sGbjcQBfA+35yjl9S6kSOSQx7AenynSuWLX3J9Z2TacLz3PvOOcR9BIOOuOeu+B9AFx5c5HmyZDjB9Qi0a+5P6CeY8Jv8Z9C6NpvCwYk7nYGY+7Nyf3kLXKMIzFcuocUVxXCmZJMCZJMB3CTcIAGjuZgwuQaXKBmVxgyjYGFzIGO5BqGjDTGMGUbbobpncAYRpcLkXHAu4XJjuBdx7pncnxF72CDyKN3A23zi59YB9PUmcHqXV0QEDk/Ptc6pdLqc/wDacaNzuyeQfl3/AElU+q9VL+THfeuLJJj6f0MtT6olVrd4XO8j/Uf7fp3+k21C4+noMzK2bIx2bgt7b9h6egvvyJxNRrfL4pfe2VVZaDAKnt5gDf2kHb9R1OIoMXIVB5VRmQCu34a4HtPD4sL5tVswqruHrI7cFVFEMW9LBH1qclsrZHXHjs5MrBF/3Hiz8v8AidpoUxYPE/pxSvkYliSzZCON5J96uuwuFxyj0EhbObGX/wDkBOLrOnuXx9iim2YbmqiK4AupbauzNMWtIPf7GWDDU6fb32kEWCpDAicQMoP8Dkzc6oLqMi2P/Upjcq3KeUkO35bePec4YEKjbwPZTxDOus8Wv7G/+pH7z1HRdcMuOudyUp+nof0nmNZ06z/02WvY71cH5FTzI6bmyYcqM5ZRYV9+4jaePxev3kV7i4iYrkkyCrkkySYrgUWkkybgTAdwk3HAm47mVx3A1BjmYMYaBoIXJBjBgVujBkQuVGlx3M7j3QNLjuZbo7lGtxMwHJNAdyZnunRdb17Pu0+MqnnGMsSPMasgfSFjs9bmXKpxJkYE35loAfWxyJ4nVax9Pm/p8RO5j5lQkAgilYCj3Js37HntPRacLjXjIhNc24v7cGefxsG1DagiwxAB+Q4Fwtj0HS2KUzYLc/3tuZgflxQnKw6nMuTz5N6OeFKKCp5Pp3HEek16gDaAfmeTOaNajcMqm4Rw+rJ46lPIV2lWTKofE4NcEH6Tx2u1JJ3ZKULwqWKUDjn0A47T0vW+pKoGLAobK/lCKdx/KcPpfw7kLjNnAB3WMZont+Jq4u+w9PX2gR0rS+DjbVvxkddmFfVARyxHoSP0nXYcxVQoPAnoetAohL/OjY5PoKnjnykcXISuwbVV25mY1d9/3nTZtTXc/wATrM3VyLFfcEwuu/yZWyarCqEcJk8Qn0x8X97AH3nptKwVQq9hx3nifhzTvlOTUM21GHhg+rVya9p6fp7UrAcqLN3f15lZ67Fm4JXuCSPnMv6k+U35WHc87SPQydO25WcduDXpYX9uJOPjeoNA068Xx6yD1Wiz70DHuPKfqJoTOo+HnO1lJuiCPXj2nakyKZMVxEySYDJiLSSZJMC90JFwgTcdzO4AwNbjBme6MNKNQ0A0zuO4GgaPdM7hcI03R7plcdwNLj3TO47lF7p0ut0IGRnLgq9nYUB2Me7k/IA1x6zt5w8mmZ2PiONhBXYgI3Jd0Td89j9JFjrNT09sqMMKoo8u4bQhIryoPotEg+86YY82nbzYyAPdTX5z2+NQopRQEx1mqC48jI6BgrUSwoMP+4gteXXrKdzjAPuvAnJxddQd1B+5M85rcniN4mQqjPW7z+djVWEXgTjNgrs7/cSj169fRSTjx41Ju2AAJv3NXMsnxDfc/lPG5Vb/ADP8zglxvAdiUsXz3HtA9lq+peKoq9tFueL5q553W6yr7/WuJnr+sKq2pHagLoBROuw9T8YbHYAKlLsUsWriuO0zqp1eqYjjj95xtPhOSu/e/kfrOz0/R82QgJhyMvqwUgBffmel0XwzlC0uOvKRZIBv0hKrpnTyuDHvNccKBXl9/v8AzOwwY6Xag9D+UrTdDyjnJnJJ9FHb7mch9Gqja+TKq82wIUcd/MB/MqJ0ACIEJUWSa5LMfr6Ti5rR6HIBtb7lDwROVk1emxKV8Yf7VcFmAP5zqc+u07Gzlbkkj3F9x2ktXHouiZqcrYqgB7k9/wBhO5LTwuPrenTtkex6gG/txOyT4ywHuSOO5DD+I1cemJiuedHxfp/8j9gT/E2X4m0xonLtv3BhHdEyd067H1rTt+HPj+7AfnfacrHnVvwMrf7WB/aUb7oTOEBXGDCEgdxgwhArdGDCEAuO4QlQ7hcIQHC4QgFwJhCBhl1yrxRJ+U6zFjtXGzEzPlzZN7iyA+QsF7dwDX2hCEcPD8MEMxyZiMbk1jwL4QB9ebJnLf4dwKPwMx/1ZHs/kRHCVLWeb4X0jinwmv8ATlyqfzDcziYfhDRBuMDGu+/Nmb/9QhIsc3TdB02PnFpsK12PhqWP1bufzncLox2bt/iO1fP3hCBOUhSFH/Ye8ltSF45PFxQlTrijJua/lf6zr/iLVtj0+VksNs7gkV8+I4SNvm+fWM5t2ZiTZYlie3zM4LNz+kIQMwxHrDeQe/HtHCQUrwGUg3cIQNcec8D09jNF1Tg2GI+/I+8IQOUdW7ebxMgv2dgP3hCEo//Z"></img>
+      </div>
+      <div className='body'>
+        <UserForms setvazhipadList={setvazhipadList} />
+        <VazhipadTable vazhipadList={vazhipadList} /> 
+ 
+      </div>
+        
     </div>
   );
-}
-
+};
 export default App;
