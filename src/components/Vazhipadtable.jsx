@@ -1,3 +1,6 @@
+import vazhipadSum from "../Data/vazhipadSum"
+
+
 const VazhipadTable=(props)=>{
     const {vazhipadList}=props
 return(
@@ -28,6 +31,7 @@ return(
                 }
             </tbody>
         </table>
+        <h1>TOTAL AMOUNT: {vazhipadSum(vazhipadList)}</h1>
 
     </div>
 )

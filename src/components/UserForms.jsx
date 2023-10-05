@@ -5,7 +5,7 @@ import { useState } from "react";
 
 
 const UserForms=(props)=>{
-    const {setvazhipadList}=props
+    const {setvazhipadList,vazhipadList}=props
  const [name,setName]=useState('')
  const [naalu,setNaalu]=useState('')
  const [vazhipad,setVazhipad]=useState('')
@@ -82,7 +82,7 @@ const handlereset=()=>{
             <button type="reset">CANCEL</button>
             </div>
             
-            <h1>TOTAL AMOUNT:{vazhipad_obj.amount}</h1>
+           
         </form>
     );
 };
